@@ -145,6 +145,17 @@ const MessageBox: React.FC<MessageBoxType> = ({ focus = false, notch = true, sty
               </div>
             )}
 
+            {props.type === 'html' && (
+              <div
+                className={classNames('rce-mbox-text', {
+                  'rce-mbox-text-retracted': props.retracted,
+                  'left': props.position === 'left',
+                  'right': props.position === 'right',
+                })}
+                dangerouslySetInnerHTML={{ __html: props.text }}
+              />
+            )}
+
             {props.type === 'location' && <LocationMessage focus={focus} notch={notch} {...props} />}
 
             {props.type === 'photo' && <PhotoMessage focus={focus} notch={notch} {...props} />}

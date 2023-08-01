@@ -1081,6 +1081,7 @@ export type MessageType =
   | ({ type: 'meetingLink' } & IMeetingLinkMessageProps)
   | ({ type: 'file' } & IFileMessageProps)
   | ({ type: 'text' } & ITextMessageProps)
+  | ({ type: 'html' } & ITextMessageProps)
   | ({ type: 'system' } & ISystemMessageProps)
   | ({ type: 'meeting' } & IMeetingMessageProps)
 
