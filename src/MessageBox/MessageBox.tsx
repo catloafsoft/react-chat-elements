@@ -172,29 +172,30 @@ const MessageBox: React.FC<MessageBoxType> = ({ focus = false, notch = true, sty
             {props.type === 'meetingLink' && (
               <MeetingLink focus={focus} notch={notch} {...props} actionButtons={props?.actionButtons} />
             )}
+            { props.date && 
+              <div
+                title={props.statusTitle}
+                className={classNames(
+                  'rce-mbox-time',
+                  { 'rce-mbox-time-block': thatAbsoluteTime },
+                  { 'non-copiable': !props.copiableDate }
+                )}
+                data-text={props.copiableDate ? undefined : dateText}
+              >
+                {props.copiableDate && props.date && (props.dateString || format(props.date))}
+                {props.status && (
+                  <span className='rce-mbox-status'>
+                    {props.status === 'waiting' && <MdAccessTime />}
 
-            <div
-              title={props.statusTitle}
-              className={classNames(
-                'rce-mbox-time',
-                { 'rce-mbox-time-block': thatAbsoluteTime },
-                { 'non-copiable': !props.copiableDate }
-              )}
-              data-text={props.copiableDate ? undefined : dateText}
-            >
-              {props.copiableDate && props.date && (props.dateString || format(props.date))}
-              {props.status && (
-                <span className='rce-mbox-status'>
-                  {props.status === 'waiting' && <MdAccessTime />}
+                    {props.status === 'sent' && <MdCheck />}
 
-                  {props.status === 'sent' && <MdCheck />}
+                    {props.status === 'received' && <IoIosDoneAll />}
 
-                  {props.status === 'received' && <IoIosDoneAll />}
-
-                  {props.status === 'read' && <MdDoneAll color='#4FC3F7' />}
-                </span>
-              )}
-            </div>
+                    {props.status === 'read' && <MdDoneAll color='#4FC3F7' />}
+                  </span>
+                )}
+              </div>
+            }
           </div>
 
           {notch &&
