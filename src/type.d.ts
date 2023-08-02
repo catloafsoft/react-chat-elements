@@ -156,14 +156,14 @@ export interface IMessage {
   text: string
   title: string
   focus: boolean
-  date: number | Date
+  date?: number | Date
   dateString?: string
   avatar?: string
-  titleColor: string
+  titleColor?: string
   forwarded: boolean
   replyButton: boolean
   removeButton: boolean
-  status: 'waiting' | 'sent' | 'received' | 'read'
+  status?: 'waiting' | 'sent' | 'received' | 'read'
   statusTitle?: string
   notch: boolean
   copiableDate?: boolean
